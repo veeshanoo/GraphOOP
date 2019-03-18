@@ -26,11 +26,11 @@ private:
 	T cost;
 	Node<T> *nxt;
 public:
-    Nod() {
-        id = 0;
-        cost = 0;
-        nxt = NULL;
-    }
+	Nod() {
+    	id = 0;
+    	cost = 0;
+    	nxt = NULL;
+	}
 	Node(const int& v, const T& c) {
 		id = v;
 		cost = c;
@@ -159,7 +159,7 @@ public:
 	void buildGraph();
 	void Reserve();
 	void Free();
-    void addEdge(Node<T>**, const int&, const int&);
+	void addEdge(Node<T>**, const int&, const int&);
 	int **RoyFloydMatrix();
 	void Dfs(const int&, const int&);
 	int *DijkstraPath(const int&, const int&);
@@ -209,18 +209,18 @@ void Graph<T>::Reserve() {
 	seen = new int[nrNodes];
 	comp_id = new int[nrNodes];
 	comp_sz = new int[nrNodes];
-    for (int i = 0; i < nrNodes; i++) {
-        v[i] = comp[i] = NULL;
-        seen[i] = comp_id[i] = comp_sz[i] = 0;
-    }
+	for (int i = 0; i < nrNodes; i++) {
+    	v[i] = comp[i] = NULL;
+    	seen[i] = comp_id[i] = comp_sz[i] = 0;
+	}
 	if (nrEdges > 0) 
 		edges = new Edge<T>[nrEdges];
 }
 
 template <class T>
 void Graph<T>::Free() {
-    for (int i = 0; i < nrNodes; i++) {
-	    Node<T> *aux;
+	for (int i = 0; i < nrNodes; i++) {
+		Node<T> *aux;
 		while (v[i] != NULL) {
 			aux = v[i] -> nxt;
 			delete v[i];
@@ -334,7 +334,7 @@ int *Graph<T>::DijkstraPath(const int& from, const int& to) {
 	int *path;
 	int p = to;
 	int cnt = 0;
-	
+
 	while (p != -1) {
 		cnt++;
 		p = prv[p];
@@ -456,7 +456,7 @@ Graph<T> operator * (Graph<T> lhs, const Graph<T>& rhs) {
 		p = pp;
 	}
 	
-	lhs.~Graph();
+	lhs.~Free();
 	lhs.nrNodes = rhs.nrNodes;
 	lhs.nrEdges = cnt2;
 	lhs.Reserve();
@@ -483,6 +483,6 @@ int main() {
 	Graph<int> c;
 	c = a * b;
 	out << c;
-    Graph<int> d = a * b * c;
+	Graph<int> d = a * b * c;
     return 0;
 }
