@@ -484,6 +484,5 @@ int main() {
 	c = a * b;
 	out << c;
     Graph<int> d = a * b * c;
-    out << d;
     return 0;
 }
