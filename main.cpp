@@ -27,27 +27,32 @@ private:
 	Node<T> *nxt;
 public:
 	Nod() {
-    	id = 0;
-    	cost = 0;
-    	nxt = NULL;
+		id = 0;
+		cost = 0;
+		nxt = NULL;
 	}
+
 	Node(const int& v, const T& c) {
 		id = v;
 		cost = c;
 		nxt = NULL;
 	}
+
 	~Node() {}
+
 	int getId() {
 		return id;
 	}
+
 	int getCost() {
 		return cost;
 	}
+
 	Node *getNxt() {
 		return nxt;
 	}
-	template <class U>
-	friend class Graph;
+
+	template <class U> friend class Graph;
 }; 
 
 template <class T>
@@ -62,36 +67,46 @@ public:
 		y = 0;
 		cost = 0;
 	}
+
 	Edge(const int& a, const int& b, const T& c) {
 		x = a;
 		y = b;
 		cost = c;
 	}
+
 	~Edge() {}
+
 	int getX() {
 		return x;
 	}
+
 	int getY() {
 		return y;
 	}
+
 	T getCost() {
 		return cost;
 	}
+
 	bool operator < (const Edge& other) const {
 		return cost < other.cost;
 	}
+
 	Edge& operator = (const Edge& other) {
 		x = other.x;
 		y = other.y;
 		cost = other.cost;
 		return *this;
 	}
+
 	bool operator == (const Edge& other) const {
 		return (x == other.x && y == other.y) || (x == other.y && y == other.x);
 	}
+
 	bool operator != (const Edge& other) const {
 		!(*this == other);
 	}
+
 	template <class U> friend class Graph;
 };
 
@@ -148,14 +163,16 @@ public:
 		Free();
 	}
 	// Function declarations
-	template <class U>
-	friend Graph<U> operator * (Graph<U> lhs, const Graph<U>& rhs);
+	template <class U> friend Graph<U> operator * (Graph<U> lhs, const Graph<U>& rhs);
+
 	int getNrNodes() {
 		return nrNodes;
 	}
+
 	int getNrEdges() {
 		return nrEdges;
 	}
+	
 	void buildGraph();
 	void Reserve();
 	void Free();
