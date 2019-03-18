@@ -456,7 +456,7 @@ Graph<T> operator * (Graph<T> lhs, const Graph<T>& rhs) {
 		p = pp;
 	}
 	
-	lhs.~Free();
+	lhs.Free();
 	lhs.nrNodes = rhs.nrNodes;
 	lhs.nrEdges = cnt2;
 	lhs.Reserve();
@@ -484,5 +484,5 @@ int main() {
 	c = a * b;
 	out << c;
 	Graph<int> d = a * b * c;
-    return 0;
+	return 0;
 }
